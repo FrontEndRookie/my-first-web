@@ -1,4 +1,5 @@
-import './globals.css'
+import "./globals.css";
+import dynamic from "next/dynamic";
 
 export default function RootLayout({ children }) {
   return (
@@ -10,5 +11,5 @@ export default function RootLayout({ children }) {
       <head />
       <body>{children}</body>
     </html>
-  )
+  );
 }

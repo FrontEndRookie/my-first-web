@@ -1,0 +1,86 @@
+
+.navbar{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    background-color: #000;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    input {
+        width: 40px;
+        height: 40px;
+        /* 这里我们把复选框不透明度设置为0，直接变透明 */
+        opacity: 0;
+        /* 鼠标变小手 */
+        cursor: pointer;
+    }
+    span{
+        position: absolute;
+        left:15px;
+        width: 30px;
+        height: 4px;
+        /* 现在将两条线放到一起，然后单独设置第二条线的位置，calc方法可以自动计算数值 */
+        top: calc(50% - 10px);
+        border-radius: 15px;
+        background-color: #fff;
+        /* 现在span覆盖着复选框，鼠标放到span上是点不中复选框的，下面这个属性就可以解决这个问题，即便鼠标放到span上点击也能选中或取消选中复选框 */
+        pointer-events: none;
+        /* 收回来的时候过渡刚好是相反的 */
+        transition: transform 0.3s ease-in-out,top 0.3s ease-in-out 0.3s;
+        /* 现在过渡效果有点快，有点生硬 */
+        &:nth-child(3){
+            top: calc(50% + 6px);
+
+        }
+        
+    }
+    ul{
+        width: 0;
+        overflow: hidden;
+        transition: all 0.5s;
+        white-space: nowrap;
+        display: flex;
+        li{
+            list-style: none;
+            margin: 0px 15px;
+            a{
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 700;
+                color:silver;
+                position: relative;
+                &:hover{
+                    color:#fb7299;
+                    cursor: pointer;
+                }
+                input{
+                    position: absolute;
+                    left: 0;
+                    width: 120px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+.navbar input:checked ~ ul{
+    width: 350px;
+}
+.navbar input:checked ~ span:nth-child(2){
+    top: calc(50% - 2px);
+    transform: rotate(-45deg);
+    background-color: #fb7299;
+    /* 这里先执行top，然后0.3秒后执行transform */
+    transition: top 0.3s ease-in-out,transform 0.3s ease-in-out 0.3s;
+}
+.navbar input:checked ~ span:nth-child(3){
+    top: calc(50% - 2px);
+    transform: rotate(45deg);
+    background-color: #fb7299;
+    transition: top 0.3s ease-in-out,transform 0.3s ease-in-out 0.3s;
+}
