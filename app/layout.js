@@ -1,6 +1,5 @@
 import "./globals.css";
-import dynamic from "next/dynamic";
-
+import TouchBar from './tourchBar'
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -9,7 +8,10 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+      <TouchBar/>
+        {children}
+        </body>
     </html>
   );
 }
