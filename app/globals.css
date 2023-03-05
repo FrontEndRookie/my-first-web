@@ -12,3 +12,316 @@ body {
   overflow: hidden;
 }
 
+/* 首页左侧样式 */
+@font-face {
+  /* 指定字体名字 */
+  font-family: 'myTitle';
+  /* 服务器中字体路径 */
+  src: url('../public/3.ttf')/* 指定字体格式，一般不写 */
+}
+.pageTitle{
+  font-family: 'myTitle';
+}
+p {
+  font-size: 30px;
+  color: salmon;
+  font-family: myFont1;
+}
+.floatDiv h1 {
+  margin-left: 50px;
+  margin-top: 30px;
+  font-size: 50px;
+}
+.floatDiv{
+  width: 45vw;
+  height: 100vh;
+  background-color:rgba(204,102,51,0.6);
+  clip-path: polygon(0 0,55% 0,88% 100%,0 100%);
+  position: fixed;
+  left: 0;
+  z-index: 10;
+  color: #fff;
+}
+.floatDiv h2{
+  display: inline-block;
+  width: 50%;
+  margin-top: 200px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  text-align: left;
+
+}
+.floatDiv div div{
+  width: 60%;
+  margin-left: 50px;
+  text-align: left;
+  line-height: 30px;
+}
+
+
+
+.dropDownImg{
+  position: fixed;
+  top: 50px;
+  right: 40px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.upDownImg{
+  position: fixed;
+  top: 50px;
+  right: 40px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.dropDownPage{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: -9999px;
+  z-index: 100;
+  background-color: rgba(255,255,255,.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downPage .dropDownPage{
+  animation:downP 2s ease;
+  animation-fill-mode: forwards;
+
+}
+@keyframes downP{
+  0% {top:-120vh}
+  100% {top:0}
+}
+.upPage .dropDownPage{
+  animation:upP 2s ease;
+  animation-fill-mode: forwards;
+}
+@keyframes upP{
+  0% {top:0px}
+  100% {top:-120vh}
+}
+
+.dropDownWords{
+  display: inline;
+  width: auto;
+  margin: auto;
+  text-align: center;
+  color: gray;
+  position: relative;
+}
+.dropDownWords::after{
+  content:'|';
+  position: absolute;
+  right: -5px;
+  animation:flash .5s infinite
+}
+.dropDownContent{
+  text-align: center;
+  margin-bottom: 66px;
+}
+
+@keyframes flash{
+  from { opacity: 0;}
+  to {opacity:1}
+}
+.loginBox {
+  height: 100vh;
+  /* 溢出隐藏 */
+  overflow: hidden;
+  /* 设置弹性布局 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 设置渐变色 */
+  /* background: linear-gradient(to right, #e6a49d, #fff) */
+  background-image: url('/loginBg.jpg');
+  background-size: 100% 100%;
+}
+/* 四叶草 */
+.box {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  /* 设置换行 */
+  flex-wrap: wrap;
+  /* 动画，转动 */
+  animation: myRotate 10s linear infinite;
+  transform: scale(0.6);
+}
+/* 单片四叶草，正方形 */
+.clover {
+  width: 200px;
+  height: 200px;
+  background:linear-gradient(45deg, #f1a861, #d54827);
+  opacity: .8;
+}
+
+/* 单片四叶草，圆形 */
+.clover::before {
+  content: '';
+  width: 200px;
+  height: 200px;
+  background-color: #d54827;
+  position: absolute;
+  border-radius: 50%;
+  transform: translateX(-100px);
+}
+
+/* 单片四叶草，圆形 */
+.clover::after {
+  content: '';
+  width: 200px;
+  height: 200px;
+  background-color: #d54827;
+  position: absolute;
+  border-radius: 50%;
+  transform: translateY(-100px);
+}
+
+/* 设置水平竖直方向的位置，以及旋转角度 */
+.clover:nth-child(1) {
+  transform: translate(52px, 52px);
+}
+
+.clover:nth-child(2) {
+  transform: translate(52px, 52px) rotate(90deg);
+}
+
+.clover:nth-child(3) {
+  transform: translateX(52px) rotate(-90deg);
+}
+
+.clover:nth-child(4) {
+  transform: translateX(52px) rotate(180deg);
+}
+
+/* 旋转动画 */
+@keyframes myRotate {
+  25% {
+      transform: rotate(90deg) scale(.8);
+  }
+
+  50% {
+      transform: rotate(180deg) scale(.7);
+  }
+
+  75% {
+      transform: rotate(270deg) scale(.9);
+  }
+
+  100% {
+      transform: rotate(360deg) scale(.6);
+  }
+}
+
+/* 表单盒子 */
+.form-box {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  border-radius: 5px;
+  right: 20%;
+  /* 模糊，磨砂质感 */
+  /* backdrop-filter: blur(10px); */
+  background-color: rgba(255,255,255,.4);
+  
+  box-shadow: 2px 1px 19px rgba(0, 0, 0, .5);
+  z-index: 99;
+}
+
+.login-box,
+.register-box {
+  /* 过渡动画 */
+  transition: 2s ease-in-out;
+}
+
+/* 一开始隐藏注册盒子 */
+.register-box {
+  display: none;
+}
+
+/* 标题 */
+.title {
+  margin-top: 50px;
+  text-align: center;
+  /* 设置用户禁止选中 */
+  user-select: none;
+  color: #fff;
+  /* 文字阴影 */
+  text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+}
+
+/* 图片盒子 */
+.img-box {
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  user-select: none;
+  border-radius: 50%;
+  /* 溢出隐藏 */
+  overflow: hidden;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+}
+
+/* 图片 */
+.img-box img {
+  width: 100%;
+}
+
+/* 输入框盒子 */
+.input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 输入框 */
+.loginInput {
+  outline: none;
+  width: 60%;
+  height: 40px;
+  margin-bottom: 20px;
+  text-indent: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 20px;
+  border: 1px solid #fff;
+}
+
+input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+/* 按钮盒子 */
+.btn-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 按钮 */
+button {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 10px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #c08f8a;
+  /* border: 1px solid #e6a49d; */
+}
+
+button:hover {
+  cursor: pointer;
+}

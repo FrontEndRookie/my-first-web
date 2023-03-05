@@ -1,0 +1,218 @@
+.listBox {
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 60px;
+    margin-left: 100px;
+    width: 500px;
+    height: 400px;
+    background-color: whitesmoke;
+    -webkit-box-shadow: 3px 3px 12px pink;
+    box-shadow: 3px 3px 12px pink;
+    -webkit-transform: preserve-3d;
+    -ms-transform: preserve-3d;
+    transform: preserve-3d;
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #000;
+    border-radius: 5px;
+    opacity: .8;
+    p {
+        font-size: 20px;
+        font-weight: bolder;
+      }
+    .cover {
+        top: 0;
+        position: absolute;
+        background-color: lightgray;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        -webkit-transform-origin: 0;
+        -ms-transform-origin: 0;
+        transform-origin: 0;
+        -webkit-box-shadow: 4px 4px 12px pink;
+        box-shadow: 4px 4px 12px pink;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        overflow: hidden;
+        .coverContent{
+            position: absolute;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .coverContentTitle{
+                font-size: 30px;
+                font-weight: bold;
+                color: plum;
+                margin-bottom: 180px;
+            }
+        }
+
+      }
+      .listBoxDescription{
+        text-align: left;
+        text-indent: 15px;
+        font-size: 20px;
+        word-break: break-all;
+        max-height: 85%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 11;
+      }
+      &:hover{
+        .cover{
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            -webkit-transform: rotatey(-80deg);
+            -ms-transform: rotatey(-80deg);
+            transform: rotatey(-80deg);
+        }
+      }
+      .detailButton {
+        padding: 0;
+        margin: 0;
+        border: none;
+        background: none;
+      }
+      
+      .detailButton {
+        --primary-color: #111;
+        --hovered-color: pink;
+        position: absolute;
+        display: flex;
+        font-weight: 600;
+        font-size: 20px;
+        gap: 0.5rem;
+        align-items: center;
+        bottom: 10px;
+        right: 10px;
+      }
+      
+      .detailButton p {
+        margin: 0;
+        position: relative;
+        font-size: 20px;
+        color: var(--primary-color)
+      }
+      
+      .detailButton::after {
+        position: absolute;
+        content: "";
+        width: 0;
+        left: 0;
+        bottom: -7px;
+        background: var(--hovered-color);
+        height: 2px;
+        transition: 0.3s ease-out;
+      }
+      
+      .detailButton p::before {
+        position: absolute;
+      /*   box-sizing: border-box; */
+        content: "Detail";
+        width: 0%;
+        inset: 0;
+        color: var(--hovered-color);
+        overflow: hidden;
+        transition: 0.3s ease-out;
+      }
+      
+      .detailButton:hover::after {
+        width: 100%;
+      }
+      
+      .detailButton:hover p::before {
+        width: 100%;
+      }
+      
+      .detailButton:hover svg {
+        transform: translateX(4px);
+        color: var(--hovered-color)
+      }
+      
+      .detailButton svg {
+        color: var(--primary-color);
+        transition: 0.2s;
+        position: relative;
+        width: 15px;
+        transition-delay: 0.2s;
+      }
+  }
+.descriptionList{
+    padding-top: 50px;
+    transform: translateX(30vw);
+}
+.detailBox {
+    position:fixed;
+    top:50px;
+    height: 90vh;
+    width: calc(90vw - 700px);
+    right: -1000px;
+    border: 1px solid pink;
+    background-color: rgba(255,255,255,.4);
+    border-radius: 10px;
+    .close{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 10px;
+      left: calc(100% - 40px);
+      border-radius: 5px;
+      background-color: pink;
+      font-size: 30px;
+      color: #fff;
+      text-align: center;
+      line-height: 25px;
+      cursor: pointer;
+    }    
+}
+.addDetail{
+  color: pink;
+  .detailBox{
+    animation: showDetails 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  @keyframes showDetails {
+    from {
+      right: -1000px;
+    }
+    to {
+      left: 700px;
+    }
+  }
+  .descriptionList{
+    animation: translateDescription 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  @keyframes translateDescription{
+    from {
+      transform: translateX(30vw);
+    }
+    to {
+      transform: translateX(0vw);
+    }
+  }
+}
+  
+ 
+  
+ 

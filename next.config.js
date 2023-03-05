@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
-const withLess = require("next-with-less");
 const nextConfig = {
   reactStrictMode: false,
   experimental: {
     appDir: true,
   },
+  webpack: (config) => {
+    config.resolve.alias["@"] = path.resolve(__dirname);
+    return config;
+  },
 };
 
-module.exports = withLess(nextConfig);
+module.exports = nextConfig;

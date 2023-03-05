@@ -1,5 +1,4 @@
 "use client";
-import axios from 'axios';
 import { message } from 'antd';
 import * as THREE from "../../lib/music/three.module.js";
 import { OrbitControls } from "../../lib/music/OrbitControls.js";
@@ -17,10 +16,9 @@ import { node } from "../../components/music/node";
 import { randomRange } from "../../components/music/randomRange";
 import { Triangle } from "../../components/music/Triangle";
 import SearchSong from "./SearchSong.jsx";
-import { createRef } from "react";
+import { createRef, useEffect } from "react";
 
 const Home = () => {
-
   let positionZ = 80;
   let N = 256;
   let scale = 1;
@@ -53,7 +51,7 @@ const Home = () => {
     document.body.appendChild(renderer.domElement);
     scene = new THREE.Scene();
     scene.background = new THREE.TextureLoader().load(
-      "/musicBg/youlinaixu.jpeg"
+      "/blogPic/16.jpg"
     );
 
     camera = new THREE.PerspectiveCamera(
@@ -402,6 +400,7 @@ const Home = () => {
   //  音频加载播放
   function audioLoad(url) {
     let audioLoader = new THREE.AudioLoader(); // 音频加载器
+    console.log(url)
     audioLoader.load(url, function (AudioBuffer) {
       if (audio.isPlaying) {
         audio.stop();
@@ -430,13 +429,17 @@ const Home = () => {
     message.error('暂无文件播放')
   };
   function setPlaying(nowPlay){
-    console.log('zl')
+    if(nowPlay && nowPlay !== true){
+      audioLoad(nowPlay)
+      searchRef.current.innerHTML = '暂停'
+      return 
+    }
     if(!audio.buffer){
       error()
       return
     }
     if (audio.isPlaying) {
-      audio.stop();
+      audio.pause();
       searchRef.current.innerHTML = '播放'
     } else {
       audio.play()
@@ -444,13 +447,11 @@ const Home = () => {
     }
   }
   init();
-  function getRequest(){
-    axios.get(`https://autumnfish.cn/search?keywords=黄昏`).then()
-  }
+  useEffect(()=>{return ()=>{audio.pause();audio=null}},[])
+  
   let searchRef = createRef()
   return (
     <div>
-      <div onClick={getRequest}>请求</div>
       <SearchSong useLocal={getAudio} ref={searchRef} setPlaying={setPlaying}/>
     </div>
   );
