@@ -13,7 +13,7 @@ const List = (props)=>{
         <div className={style.listBox}>
             <div style={{width:'70%',marginTop:'30px'}}>
                 <div className={style.listBoxDescription}>
-                    {props.data.description}
+                    {props.data.describe}
                 </div>
                 <button onClick={()=>showDetail()} className={style.detailButton}>
                     <p >Detail</p>
@@ -27,7 +27,7 @@ const List = (props)=>{
                 <div className={style.coverContent}>
                     <div className={style.coverContentTitle}>{props.data.title}</div>
                     <Space size={[0, 8]} wrap>
-                        {props.data.tags.map((i,idx)=><Tag color={colorList[idx]}>{i}</Tag>)}
+                        {props.data.label.map((i,idx)=><Tag key={idx} color={colorList[idx]}>{i}</Tag>)}
                         </Space>
                 </div>
                 

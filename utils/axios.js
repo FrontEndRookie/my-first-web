@@ -4,7 +4,7 @@ let baseURL;
 if (process.env.NODE_ENV === "production") {
   baseURL = "上线的地址";
 } else {
-  baseURL = "http://localhost:3000/api/";
+  baseURL = "http://localhost:3001/api/";
 }
 
 // 拦截器
@@ -19,6 +19,8 @@ axios.interceptors.response.use(
 axios.interceptors.request.use(
   (config) => {
     config.headers["Accept"] = "application/vnd.dpexpo.v1+json";
+    config.headers["Authorization"] =
+      "Bearer " + JSON.parse(sessionStorage.getItem("user"))?.token;
     config.baseURL = baseURL;
     config.timeout = 10000;
     return config;

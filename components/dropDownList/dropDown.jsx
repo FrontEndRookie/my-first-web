@@ -52,7 +52,7 @@ const dropDown = ()=>{
         </div>
         <Image onClick={()=>{changeDropDown(false)}} className="upDownImg" style={{ display:!ifDropDown?'none':'inline' }} src={'/close.png'} width="40" height="40" alt="xxx"></Image>
         <Image onClick={()=>{changeDropDown(true)}} className="dropDownImg" style={{ display:ifDropDown?'none':'inline' }} src={'/dropDown.png'} width="40" height="40" alt="xxx"></Image>
-        <button style={{position:'absolute',top:999}} onClick={()=>{let login= ifLogin;setLogin(!login)}} id="setLogin"></button>
+        <button style={{position:'absolute',top:99999}} onClick={()=>{let login= ifLogin;setLogin(!login)}} id="setLogin"></button>
         </div>
     </>
 }

@@ -21,7 +21,7 @@
     justify-content: center;
     color: #000;
     border-radius: 5px;
-    opacity: .8;
+    opacity: .9;
     p {
         font-size: 20px;
         font-weight: bolder;
@@ -170,6 +170,7 @@
     border: 1px solid pink;
     background-color: rgba(255,255,255,.4);
     border-radius: 10px;
+    overflow: auto;
     .close{
       width: 30px;
       height: 30px;
@@ -183,6 +184,7 @@
       text-align: center;
       line-height: 25px;
       cursor: pointer;
+      z-index: 100;
     }    
 }
 .addDetail{
